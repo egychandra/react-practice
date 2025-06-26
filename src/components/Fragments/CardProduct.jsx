@@ -5,7 +5,7 @@ const CardProduct = (props) => {
 
   return (
     <div
-      className="w-full max-w-sm bg-gray-600 border border-gray-500 rounded-lg shadow mx-2"
+      className="flex flex-col justify-between w-full max-w-sm bg-gray-600 border border-gray-500 rounded-lg shadow mx-2"
     >
       {children}
     </div>
@@ -29,7 +29,7 @@ const Header = (props) => {
 const Body = (props) => {
   const { children, title } = props;
   return (
-    <div className="px-5 pb-5">
+    <div className="h-full px-5 pb-5">
       <a href="#">
         <h5 className="text-xl font-semibold tracking-tight text-white">
           {title}
