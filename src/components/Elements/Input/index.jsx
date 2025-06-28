@@ -2,7 +2,7 @@ import Input from "./Input"
 import Label from "./Label"
 
 const InputForm = (props) => {
-  const { type, name, placeholder, label  } = props;
+  const { type, name, placeholder, label, ref } = props;
   return (
     <div className="mb-6">
       <Label
@@ -14,6 +14,7 @@ const InputForm = (props) => {
         type={type}
         name={name}
         placeholder={placeholder}
+        ref={ref}
       />
     </div>
   )

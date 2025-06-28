@@ -1,5 +1,5 @@
 const Input = (props) => {
-  const { type, name, placeholder } = props;
+  const { type, name, placeholder, ref } = props;
   return (
     <input
       id={name}
@@ -7,6 +7,7 @@ const Input = (props) => {
       type={type}
       name={name}
       placeholder={placeholder}
+      ref={ref}
     />
   )
 }
