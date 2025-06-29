@@ -5,7 +5,9 @@ import './index.css'
 import LoginPage from './pages/login';
 import RegisterPage from './pages/register';
 import ProductPage from './pages/products';
+import DetailProductPage from './pages/detailProduct';
 import NotFoundPage from './pages/notFound';
+import ProfilePage from './pages/profile';
 
 const router = createBrowserRouter([
   {
@@ -24,6 +26,14 @@ const router = createBrowserRouter([
   {
     path: "/products",
     element: <ProductPage />
+  },
+  {
+    path: "/product/:id",
+    element: <DetailProductPage />
+  },
+  {
+    path: "/profile",
+    element: <ProfilePage />
   }
 ]);
 
