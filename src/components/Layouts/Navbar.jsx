@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react"
+import { useState, useEffect, useContext } from "react"
 import { useSelector } from "react-redux"
+import { DarkMode } from "../../context/DarkMode";
 import { useLogin } from "../../hooks/useLogin"
 import Button from "../Elements/Button";
 
 const Navbar = () => {
   const username = useLogin();
   const cart = useSelector((state) => state.cart.data);
+  const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
   const [totalCart, setTotalCart] = useState(0);
 
   useEffect(() => {
@@ -39,6 +41,12 @@ const Navbar = () => {
       >
         {totalCart}
       </div>
+      <Button
+        classname="bg-black ml-5"
+        onClick={() => setIsDarkMode(!isDarkMode)}
+      >
+        {isDarkMode ? "Light" : "Dark"}
+      </Button>
     </div>
   )
 }
