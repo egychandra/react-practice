@@ -3,9 +3,11 @@ import { useSelector } from "react-redux"
 import { DarkMode } from "../../context/DarkMode";
 import { useLogin } from "../../hooks/useLogin"
 import Button from "../Elements/Button";
+import { useTotalPrice } from "../../context/TotalPriceContext";
 
 const Navbar = () => {
   const username = useLogin();
+  const totalPrice = useTotalPrice();
   const cart = useSelector((state) => state.cart.data);
   const { isDarkMode, setIsDarkMode } = useContext(DarkMode);
   const [totalCart, setTotalCart] = useState(0);
@@ -37,9 +39,9 @@ const Navbar = () => {
         Logout
       </Button>
       <div
-        className="bg-white text-black w-8 h-8 rounded-full flex justify-center items-center ml-5"
+        className="bg-black text-white p-2 rounded-md flex justify-center items-center ml-5"
       >
-        {totalCart}
+        Item: {totalCart} | Price: {totalPrice.toLocaleString("en-US", { style: "currency", currency: "USD" })}
       </div>
       <Button
         classname="bg-black ml-5"

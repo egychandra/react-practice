@@ -11,6 +11,7 @@ import ProductPage from './pages/products';
 import DetailProductPage from './pages/detailProduct';
 import NotFoundPage from './pages/notFound';
 import ProfilePage from './pages/profile';
+import { TotalPriceContextProvider } from './context/TotalPriceContext';
 
 const router = createBrowserRouter([
   {
@@ -44,7 +45,9 @@ createRoot(document.getElementById('root')).render(
   <StrictMode>
     <Provider store={store}>
       <DarkModeContextProvider>
-        <RouterProvider router={router} />
+        <TotalPriceContextProvider>
+          <RouterProvider router={router} />
+        </TotalPriceContextProvider>
       </DarkModeContextProvider>
     </Provider>
   </StrictMode>,

@@ -1,12 +1,16 @@
-import { useState, useEffect, useRef, useContext } from "react";
+// import { useState, useEffect, useRef, useContext } from "react";
+import { useEffect, useRef, useContext } from "react";
 import { useSelector } from "react-redux";
 import { DarkMode } from "../../context/DarkMode";
+import { useTotalPrice, useTotalPriceDispatch } from "../../context/TotalPriceContext";
 
 const TableCart = (props) => {
   const { products } = props;
   const { isDarkMode } = useContext(DarkMode);
   const cart = useSelector((state) => state.cart.data);
-  const [totalPrice, setTotalPrice] = useState(0);
+  // const [totalPrice, setTotalPrice] = useState(0);
+  const dispatch = useTotalPriceDispatch();
+  const totalPrice = useTotalPrice();
 
   useEffect(() => {
     if(products.length > 0 && cart.length > 0) {
@@ -15,10 +19,11 @@ const TableCart = (props) => {
         return acc + product.price * item.qty;
       }, 0);
   
-      setTotalPrice(sum);
+      // setTotalPrice(sum);
+      dispatch({ type: "SET_TOTAL_PRICE", payload: sum });
       localStorage.setItem("cart", JSON.stringify(cart));
     }
-  }, [cart, products]);
+  }, [cart, products, dispatch]);
 
   const totalRef = useRef(null);
 
